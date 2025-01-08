@@ -354,8 +354,8 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  Array.from({ length: len }, (_, index) => 2 * index + 1);
 }
 
 /**
@@ -561,8 +561,14 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const len = arr.length;
+  if (len <= 1) return arr;
+  const middle = Math.floor(len / 2);
+  if (len % 2 === 0) {
+    return arr.slice(middle).concat(arr.slice(0, middle));
+  }
+  return arr.slice(middle + 1).concat(arr[middle], arr.slice(0, middle));
 }
 
 module.exports = {
